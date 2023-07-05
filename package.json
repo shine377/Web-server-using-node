@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Shiny <shinymary.chandran@crystaldelta.com>",
   "license": "MIT",
+  "scripts": {
+    "start":"nodemon index.js"
+  },
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
