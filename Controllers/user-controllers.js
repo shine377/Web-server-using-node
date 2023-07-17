@@ -1,14 +1,22 @@
+const studentData = require("../modals/studentModal");
+const assessment = require("../modals/assessmentDetail");
+
 const addUser = async (req, res) => {
+  // let data = {
+  //   dateSubmitted: req.body.dateSubmitted,
+  //   assessmentTitle: req.body.assessmentTitle,
+  //   entendedBy: req.body.entendedBy,
+  //   approvedDueDate: req.body.approvedDueDate,
+  //   Status: req.body.Status
+  // };
+  // const ACCEPT_FORMAT = "YYYY-MM-DD hh:mm:ss";
+  // const date = req.params;
   let data = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    MobileNumber: req.body.MobileNumber,
-    Gender: req.body.Gender,
-    Email: req.body.Email,
-    Country: req.body.Country,
+    assessmentTitle: req.body.assessmentTitle,
+    dueDate: req.params.dueDate,
   };
 
-  const user = await create(data);
+  const user = await assessment.create(data);
   try {
     res.send(user);
     console.log("user created successfully");
@@ -18,7 +26,7 @@ const addUser = async (req, res) => {
 };
 
 const getAllUser = async (req, res) => {
-  let data = await User.findAll();
+  let data = await assessment.findAll();
   try {
     res.send(data);
     console.log("Got the response");
@@ -29,7 +37,7 @@ const getAllUser = async (req, res) => {
 
 const getOneUser = async (req, res) => {
   let id = req.params.id;
-  const data = await fineOne({ where: { id: id } });
+  const data = await studentData.fineOne({ where: { id: id } });
   try {
     res.send(data);
     console.log("data is fetched successfully");
@@ -40,7 +48,7 @@ const getOneUser = async (req, res) => {
 
 const updateUser = async () => {
   let id = req.params.id;
-  const user = await update(req.body, { where: { id: id } });
+  const user = await studentData.update(req.body, { where: { id: id } });
   try {
     res.send(user);
     console.log("User is updated");
@@ -51,7 +59,7 @@ const updateUser = async () => {
 
 const deleteUser = async () => {
   let id = req.params.id;
-  await destroy({ where: { id: id } });
+  await studentData.destroy({ where: { id: id } });
   try {
     req.send("User Deleted");
     console.log("User is deleted");
