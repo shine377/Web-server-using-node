@@ -4,10 +4,6 @@ const sequelize = require("../Database/creatingConnection");
 const studentData = sequelize.define(
   "Student",
   {
-    dateSubmitted: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
     assessmentTitle: {
       type: DataTypes.STRING,
       allowNull: false,

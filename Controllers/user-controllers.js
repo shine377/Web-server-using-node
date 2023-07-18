@@ -1,5 +1,6 @@
-const studentData = require("../modals/studentModal");
-const assessment = require("../modals/assessmentDetail");
+// const studentData = require("../modals/studentModal");
+const assessment = require("../models/assessmentDetail");
+// const { Model } = require("sequelize");
 
 const addUser = async (req, res) => {
   // let data = {
@@ -26,8 +27,10 @@ const addUser = async (req, res) => {
 };
 
 const getAllUser = async (req, res) => {
-  let data = await assessment.findAll();
+  let data = await assessment.findAll({});
   try {
+    console.log(data);
+
     res.send(data);
     console.log("Got the response");
   } catch (err) {
@@ -37,7 +40,7 @@ const getAllUser = async (req, res) => {
 
 const getOneUser = async (req, res) => {
   let id = req.params.id;
-  const data = await studentData.fineOne({ where: { id: id } });
+  const data = await assessment.findOne({ where: { id: id } });
   try {
     res.send(data);
     console.log("data is fetched successfully");
@@ -48,7 +51,7 @@ const getOneUser = async (req, res) => {
 
 const updateUser = async () => {
   let id = req.params.id;
-  const user = await studentData.update(req.body, { where: { id: id } });
+  const user = await assessment.update(req.body, { where: { id: id } });
   try {
     res.send(user);
     console.log("User is updated");
@@ -59,7 +62,7 @@ const updateUser = async () => {
 
 const deleteUser = async () => {
   let id = req.params.id;
-  await studentData.destroy({ where: { id: id } });
+  await assessment.destroy({ where: { id: id } });
   try {
     req.send("User Deleted");
     console.log("User is deleted");
