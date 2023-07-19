@@ -35,6 +35,16 @@ module.exports = {
       },
     ]);
   },
+  async up(queryInterface, Sequelize) {
+    return queryInterface.bulkInsert("Student", [
+      {
+        dateSubmitted: "2023-07-25",
+        assessmentTitle: "Philosophical orientation",
+        extendedBy: "2",
+        approvedDueDate: "2023-07-27",
+      },
+    ]);
+  },
 
   // async down(queryInterface, Sequelize) {
   //   /**

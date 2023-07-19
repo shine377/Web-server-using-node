@@ -1,6 +1,5 @@
-// const studentData = require("../modals/studentModal");
 const assessment = require("../models/assessmentDetail");
-// const { Model } = require("sequelize");
+const studentData = require("../models/studentModal");
 
 const addUser = async (req, res) => {
   // let data = {
@@ -10,14 +9,40 @@ const addUser = async (req, res) => {
   //   approvedDueDate: req.body.approvedDueDate,
   //   Status: req.body.Status
   // };
-  // const ACCEPT_FORMAT = "YYYY-MM-DD hh:mm:ss";
-  // const date = req.params;
   let data = {
     assessmentTitle: req.body.assessmentTitle,
-    dueDate: req.params.dueDate,
+    dueDate: req.params.approvedDueDate,
   };
 
   const user = await assessment.create(data);
+  try {
+    res.send(user);
+    console.log("user created successfully");
+  } catch (err) {
+    console.log("User not created", err);
+  }
+};
+
+const tableUser = async (req, res) => {
+  let data = await studentData.findAll({});
+  try {
+    console.log(data);
+
+    res.send(data);
+    console.log("Got the response");
+  } catch (err) {
+    console.log("user not found", err);
+  }
+};
+
+const updateTableUser = async (req, res) => {
+  let data = {
+    dateSubmitted: req.body.dateSubmitted,
+    assessmentTitle: req.body.assessmentTitle,
+    approvedDueDate: req.params.approvedDueDate,
+    extendedBy: req.body.extendedBy,
+  };
+  const user = await studentData.create(data);
   try {
     res.send(user);
     console.log("user created successfully");
@@ -76,4 +101,6 @@ module.exports = {
   getOneUser,
   updateUser,
   deleteUser,
+  tableUser,
+  updateTableUser,
 };

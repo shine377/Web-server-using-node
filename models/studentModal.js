@@ -1,24 +1,37 @@
-const { Sequelize,DataTypes } = require("sequelize");
-const sequelize = require("../Database/creatingConnection");
+const { Sequelize, DataTypes } = require("sequelize");
+const sequelize = require("../database/creatingConnection");
 
 const studentData = sequelize.define(
   "Student",
   {
-    assessmentTitle: {
-      type: DataTypes.STRING,
+    dateSubmitted: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
-    entendedBy: {
-      type: DataTypes.INTEGER,
+    assessmentTitle: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    extendedBy: {
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
     approvedDueDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
+      type: Sequelize.STRING,
+      // allowNull: false,
     },
     Status: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
+    },
+    createdAt: {
       allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.fn("NOW"),
     },
   },
   {

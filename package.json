@@ -5,7 +5,10 @@
   "author": "Shiny <shinymary.chandran@crystaldelta.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --unhandled-rejections=strict utils/index.js"
+    "start": "nodemon --unhandled-rejections=strict utils/index.js",
+    "migrate":"npx sequelize-cli db:migrate",
+    "undoMigrate":"npx sequelize-cli db:migrate:undo",
+    "runSeeds":"npx sequelize-cli db:seed:all"
   },
   "dependencies": {
     "cors": "^2.8.5",

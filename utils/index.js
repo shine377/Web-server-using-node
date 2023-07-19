@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const port = 8000;
 const app = express();
-const router = require("../Routers/user-router");
-const sequelize = require("../Database/creatingConnection");
+const router = require("../routers/user-router");
+const sequelize = require("../database/creatingConnection");
 
 // const studentData = require("../modals/studentModal");
 // const teacherData = require("../modals/teacherModal");

@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-const sequelize = require("../Database/creatingConnection");
+const sequelize = require("../database/creatingConnection");
 
 const teacherData = sequelize.define("Teacher", {
   studentId: {

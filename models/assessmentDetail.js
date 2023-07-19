@@ -1,10 +1,6 @@
 const { Sequelize } = require("sequelize");
-const sequelize = require("../Database/creatingConnection");
+const sequelize = require("../database/creatingConnection");
 const assessment = sequelize.define("AssessmentDetails", {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-  },
   assessmentTitle: {
     type: Sequelize.STRING,
     allowNull: false,
