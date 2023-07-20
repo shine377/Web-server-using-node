@@ -18,7 +18,7 @@ const studentData = sequelize.define(
     },
     approvedDueDate: {
       type: Sequelize.STRING,
-      // allowNull: false,
+      allowNull: false,
     },
     Status: {
       type: Sequelize.STRING,

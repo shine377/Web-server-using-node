@@ -1,47 +1,47 @@
-"use strict";
+// "use strict";
 
 /** @type {import('sequelize-cli').Migration} */
-
+const moment = require("moment");
 module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert("AssessmentDetails", [
       {
         assessmentTitle: "Philosophical orientation",
-        dueDate: "2023-07-25",
+        dueDate: moment().format("2023-10-31T09:00:00.594Z"),
       },
       {
         assessmentTitle: "Metaphorical orientation",
-        dueDate: "2023-07-28",
+        dueDate: moment().format("2023-08-13:14:30:01.766Z"),
       },
       {
         assessmentTitle: "Leading theorists",
-        dueDate: "2023-08-05",
+        dueDate: moment().format("2023-08-12T15:53:25.390Z"),
       },
       {
         assessmentTitle: "Nature of mind",
-        dueDate: "2023-08-12",
+        dueDate: moment().format("2023-07-22T12:03:01.766Z"),
       },
       {
         assessmentTitle: "Nature of knowledge",
-        dueDate: "2023-08-15",
+        dueDate: moment().format("2023-08-12T18:30:00.808Z"),
       },
       {
         assessmentTitle: "Nature of learning",
-        dueDate: "2023-08-20",
+        dueDate: moment().format("2023-08-11T18:30:00.766Z"),
       },
       {
         assessmentTitle: "Features of authentic assessment",
-        dueDate: "2023-08-25",
+        dueDate: moment().format("2023-07-20T08:51:05.495Z"),
       },
     ]);
   },
   async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert("Student", [
       {
-        dateSubmitted: "2023-07-25",
+        dateSubmitted: moment().format("31/10/2023, 14:30:01"),
         assessmentTitle: "Philosophical orientation",
         extendedBy: "2",
-        approvedDueDate: "2023-07-27",
+        approvedDueDate: moment().format("31/10/2023, 14:30:01"),
       },
     ]);
   },

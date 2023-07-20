@@ -4,6 +4,9 @@ const sequelize = new Sequelize("Assessment-request", "root", "Shine107&.", {
   port: 3306,
   dialect: "mysql",
   logging: false,
+  dialectOptions: {
+    useUTC: false,
+  },
 });
 try {
   sequelize.authenticate();

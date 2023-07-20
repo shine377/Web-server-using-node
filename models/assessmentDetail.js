@@ -6,7 +6,7 @@ const assessment = sequelize.define("AssessmentDetails", {
     allowNull: false,
   },
   dueDate: {
-    type: Sequelize.STRING,
+    type: Sequelize.DATE,
     allowNull: false,
   },
   createdAt: {

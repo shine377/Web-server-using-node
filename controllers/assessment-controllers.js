@@ -2,13 +2,6 @@ const assessment = require("../models/assessmentDetail");
 const studentData = require("../models/studentModal");
 
 const addUser = async (req, res) => {
-  // let data = {
-  //   dateSubmitted: req.body.dateSubmitted,
-  //   assessmentTitle: req.body.assessmentTitle,
-  //   entendedBy: req.body.entendedBy,
-  //   approvedDueDate: req.body.approvedDueDate,
-  //   Status: req.body.Status
-  // };
   let data = {
     assessmentTitle: req.body.assessmentTitle,
     dueDate: req.params.approvedDueDate,
