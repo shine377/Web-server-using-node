@@ -38,10 +38,12 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert("Student", [
       {
+        id: 1,
         dateSubmitted: moment().format("31/10/2023, 14:30:01"),
         assessmentTitle: "Philosophical orientation",
         extendedBy: "2",
         approvedDueDate: moment().format("31/10/2023, 14:30:01"),
+        Status: "Pending",
       },
     ]);
   },

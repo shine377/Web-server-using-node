@@ -1,5 +1,6 @@
 const assessment = require("../models/assessmentDetail");
 const studentData = require("../models/studentModal");
+const teacherData = require("../models/teacherModal");
 
 const addUser = async (req, res) => {
   let data = {
@@ -32,8 +33,9 @@ const updateTableUser = async (req, res) => {
   let data = {
     dateSubmitted: req.body.dateSubmitted,
     assessmentTitle: req.body.assessmentTitle,
-    approvedDueDate: req.params.approvedDueDate,
+    approvedDueDate: req.body.approvedDueDate,
     extendedBy: req.body.extendedBy,
+    Status: "pending",
   };
   const user = await studentData.create(data);
   try {

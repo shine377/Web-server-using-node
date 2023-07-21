@@ -9,8 +9,6 @@ const sequelize = require("../database/creatingConnection");
 // const teacherData = require("../modals/teacherModal");
 // const assessment = require("../modals/assessmentDetail");
 
-
-
 // studentData.hasMany(teacherData);
 app.use(cors());
 
@@ -18,9 +16,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/user',router);
-//app.use('/question', surveyQuestion)
-
+app.use("/user", router);
 
 sequelize
   .sync({ alter: true })

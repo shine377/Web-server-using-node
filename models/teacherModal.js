@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 const sequelize = require("../database/creatingConnection");
 
-const teacherData = sequelize.define("Teacher", {
+const teacherData = sequelize.define("Teachers", {
   studentId: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -12,7 +12,7 @@ const teacherData = sequelize.define("Teacher", {
   },
   dateSubmitted: {
     type: Sequelize.INTEGER,
-    allowNull: false, 
+    allowNull: false,
   },
   assessmentTitle: {
     type: Sequelize.STRING,
