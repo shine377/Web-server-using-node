@@ -13,7 +13,8 @@
 
 ## `Migration:`
 
-      The migration folder contains all the tables which is needed to be create for the project.In this project we have three tables such as AssessmentDetails,Students,Teachers.
+      The migration folder contains all the tables which is needed to be create for the project.
+      In this project we have three tables such as AssessmentDetails,Students,Teachers.
 
 You can run the migrations by using the scripts in the package.json.
 
