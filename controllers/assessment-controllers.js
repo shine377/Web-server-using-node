@@ -3,7 +3,7 @@ const studentData = require("../models/studentModal");
 const teacherData = require("../models/teacherModal");
 
 
-//getting data from students table
+//Getting data from students table
 const tableUser = async (req, res) => {
   let data = await studentData.findAll({});
   try {
@@ -17,7 +17,7 @@ const tableUser = async (req, res) => {
 };
 
 
-//posting data from the form to the table
+//Posting data from the form to the table
 const updateTableUser = async (req, res) => {
   let data = {
     dateSubmitted: req.body.dateSubmitted,
@@ -38,7 +38,7 @@ const updateTableUser = async (req, res) => {
 };
 
 
-//fetching all the assessments in the dropdown
+//Fetching all the assessments in the dropdown
 const getAllUser = async (req, res) => {
   let data = await assessment.findAll({});
   try {
@@ -52,7 +52,7 @@ const getAllUser = async (req, res) => {
 };
 
 
-//fetching data for teachers table
+//Fetching data for teachers table
 const updateTeachersTable = async (req, res) => {
   const data = await teacherData.findAll({
     include: [
