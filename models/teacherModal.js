@@ -2,25 +2,25 @@ const { Sequelize } = require("sequelize");
 const sequelize = require("../database/creatingConnection");
 
 const teacherData = sequelize.define("Teachers", {
-  studentId: {
+  id: {
     type: Sequelize.INTEGER,
+    autoIncrement: true,
     allowNull: false,
+    primaryKey: true,
   },
-  studentName: {
+  teacherName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  dateSubmitted: {
-    type: Sequelize.INTEGER,
+  createdAt: {
     allowNull: false,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.fn("NOW"),
   },
-  assessmentTitle: {
-    type: Sequelize.STRING,
+  updatedAt: {
     allowNull: false,
-  },
-  Status: {
-    type: Sequelize.STRING,
-    allowNull: false,
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.fn("NOW"),
   },
 });
 

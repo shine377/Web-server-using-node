@@ -2,21 +2,8 @@ const assessment = require("../models/assessmentDetail");
 const studentData = require("../models/studentModal");
 const teacherData = require("../models/teacherModal");
 
-const addUser = async (req, res) => {
-  let data = {
-    assessmentTitle: req.body.assessmentTitle,
-    dueDate: req.params.approvedDueDate,
-  };
 
-  const user = await assessment.create(data);
-  try {
-    res.send(user);
-    console.log("user created successfully");
-  } catch (err) {
-    console.log("User not created", err);
-  }
-};
-
+//getting data from students table
 const tableUser = async (req, res) => {
   let data = await studentData.findAll({});
   try {
@@ -29,6 +16,8 @@ const tableUser = async (req, res) => {
   }
 };
 
+
+//posting data from the form to the table
 const updateTableUser = async (req, res) => {
   let data = {
     dateSubmitted: req.body.dateSubmitted,
@@ -36,6 +25,8 @@ const updateTableUser = async (req, res) => {
     approvedDueDate: req.body.approvedDueDate,
     extendedBy: req.body.extendedBy,
     Status: "pending",
+    teacherId: 1,
+    studentName: "Shiny",
   };
   const user = await studentData.create(data);
   try {
@@ -46,6 +37,8 @@ const updateTableUser = async (req, res) => {
   }
 };
 
+
+//fetching all the assessments in the dropdown
 const getAllUser = async (req, res) => {
   let data = await assessment.findAll({});
   try {
@@ -58,44 +51,30 @@ const getAllUser = async (req, res) => {
   }
 };
 
-const getOneUser = async (req, res) => {
-  let id = req.params.id;
-  const data = await assessment.findOne({ where: { id: id } });
+
+//fetching data for teachers table
+const updateTeachersTable = async (req, res) => {
+  const data = await teacherData.findAll({
+    include: [
+      {
+        model: studentData,
+        as: "Students",
+      },
+    ],
+    where: { id: 1 },
+  });
   try {
+    console.log(data);
     res.send(data);
-    console.log("data is fetched successfully");
-  } catch (error) {
-    console.log("User not found", error);
-  }
-};
-
-const updateUser = async () => {
-  let id = req.params.id;
-  const user = await assessment.update(req.body, { where: { id: id } });
-  try {
-    res.send(user);
-    console.log("User is updated");
-  } catch (error) {
-    console.log("Updating the user is failed", error);
-  }
-};
-
-const deleteUser = async () => {
-  let id = req.params.id;
-  await assessment.destroy({ where: { id: id } });
-  try {
-    req.send("User Deleted");
-    console.log("User is deleted");
+    console.log("Got the response");
   } catch (err) {
-    console.log("User not deleted", err);
+    console.log("user not found", err);
   }
 };
+
 module.exports = {
-  addUser,
   getAllUser,
-  getOneUser,
-  updateUser,
-  deleteUser,
   tableUser,
   updateTableUser,
+  updateTeachersTable,
 };

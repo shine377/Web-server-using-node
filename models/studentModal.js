@@ -1,14 +1,14 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const sequelize = require("../database/creatingConnection");
 const teacherData = require("../models/teacherModal");
-const { v4: uuidv4 } = require("uuid");
 
 const studentData = sequelize.define(
-  "Student",
+  "Students",
   {
     id: {
-      type: Sequelize.UUID,
-      defaultValue: () => uuidv4(),
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
       primaryKey: true,
     },
     dateSubmitted: {
@@ -31,6 +31,10 @@ const studentData = sequelize.define(
       type: Sequelize.STRING,
       allowNull: false,
     },
+    studentName: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
@@ -47,10 +51,7 @@ const studentData = sequelize.define(
   }
 );
 
-studentData.hasMany(teacherData, {
-  foreignKey: "student_id",
-  sourceKey: "id",
-  as: "teacherEntries",
-});
+teacherData.hasMany(studentData, { foreignKey: "teacherId" });
+studentData.belongsTo(teacherData, { foreignKey: "teacherId" });
 
 module.exports = studentData;

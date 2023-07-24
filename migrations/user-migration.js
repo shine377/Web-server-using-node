@@ -24,10 +24,11 @@ module.exports = {
     });
   },
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Student", {
+    await queryInterface.createTable("Students", {
       id: {
-        type: Sequelize.UUID,
-        defaultValue: () => uuidv4(), 
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
         primaryKey: true,
       },
       dateSubmitted: {
@@ -50,6 +51,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      studentName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -64,30 +69,30 @@ module.exports = {
   },
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Teachers", {
-      studentId: {
+      id: {
         type: Sequelize.INTEGER,
+        autoIncrement: true,
         allowNull: false,
+        primaryKey: true,
       },
-      studentName: {
+      teacherName: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      dateSubmitted: {
-        type: Sequelize.INTEGER,
+      createdAt: {
         allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
       },
-      assessmentTitle: {
-        type: Sequelize.STRING,
+      updatedAt: {
         allowNull: false,
-      },
-      Status: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("NOW"),
       },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("AssessmentDetail");
+    await queryInterface.dropTable("AssessmentDetails");
   },
 };

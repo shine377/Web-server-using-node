@@ -1,13 +1,16 @@
 const { Sequelize } = require("sequelize");
-const sequelize = new Sequelize("Assessment-request", "root", "Shine107&.", {
-  host: "localhost",
-  port: 3306,
-  dialect: "mysql",
-  logging: false,
-  dialectOptions: {
-    useUTC: false,
-  },
-});
+require("dotenv").config();
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.USER_NAME,
+  process.env.PASSWORD,
+  {
+    host: process.env.HOST,
+    port: process.env.PORT,
+    dialect: process.env.DIALECT,
+    logging: false,
+  }
+);
 try {
   sequelize.authenticate();
   console.log("Connection has been established successfully.");
