@@ -18,7 +18,7 @@ const tableUser = async (req, res) => {
 
 
 //Posting data from the form to the table
-const updateTableUser = async (req, res) => {
+ const updateTableUser = async (req, res) => {
   let data = {
     dateSubmitted: req.body.dateSubmitted,
     assessmentTitle: req.body.assessmentTitle,
