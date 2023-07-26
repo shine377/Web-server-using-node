@@ -21,10 +21,10 @@ You can run the migrations by using the scripts in the package.json.
 ## `Routers:`
 
       The routers folder has the routers.
-      -Fetching data from students table (http://localhost:8000/api/v10/table)
-      -Posting data from the form to the table (http://localhost:8000/api/v10/table)
-      -Fetching all the assessments in the dropdown (http://localhost:8000/api/v10)
-      -Fetching data for teachers table (http://localhost:8000/api/v10/teacherTable)
+      -Fetching data from students table (http://localhost:8000/api/v1/table)
+      -Posting data from the form to the table (http://localhost:8000/api/v1/table)
+      -Fetching all the assessments in the dropdown (http://localhost:8000/api/v1)
+      -Fetching data for teachers table (http://localhost:8000/api/v1/teacherTable)
 
 You can also do the get, post operations in postman.
 

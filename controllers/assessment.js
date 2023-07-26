@@ -2,24 +2,19 @@ const assessment = require("../models/assessmentDetail");
 const studentData = require("../models/studentModal");
 const teacherData = require("../models/teacherModal");
 
-
 //Getting data from students table
 const tableUser = async (req, res) => {
-  let data = await studentData.findAll({});
+  let userTableData = await studentData.findAll({});
   try {
-    console.log(data);
-
-    res.send(data);
-    console.log("Got the response");
+    res.send(userTableData);
   } catch (err) {
-    console.log("user not found", err);
+    return err;
   }
 };
 
-
 //Posting data from the form to the table
- const updateTableUser = async (req, res) => {
-  let data = {
+const updateTableUser = async (req, res) => {
+  let updatedUserData = {
     dateSubmitted: req.body.dateSubmitted,
     assessmentTitle: req.body.assessmentTitle,
     approvedDueDate: req.body.approvedDueDate,
@@ -28,33 +23,27 @@ const tableUser = async (req, res) => {
     teacherId: 1,
     studentName: "Shiny",
   };
-  const user = await studentData.create(data);
+  const user = await studentData.create(updatedUserData);
   try {
     res.send(user);
-    console.log("user created successfully");
   } catch (err) {
-    console.log("User not created", err);
+    return err;
   }
 };
-
 
 //Fetching all the assessments in the dropdown
 const getAllUser = async (req, res) => {
-  let data = await assessment.findAll({});
+  let assessmentData = await assessment.findAll({});
   try {
-    console.log(data);
-
-    res.send(data);
-    console.log("Got the response");
+    res.send(assessmentData);
   } catch (err) {
-    console.log("user not found", err);
+    return err;
   }
 };
 
-
 //Fetching data for teachers table
 const updateTeachersTable = async (req, res) => {
-  const data = await teacherData.findAll({
+  const updateTeacherData = await teacherData.findAll({
     include: [
       {
         model: studentData,
@@ -64,11 +53,9 @@ const updateTeachersTable = async (req, res) => {
     where: { id: 1 },
   });
   try {
-    console.log(data);
-    res.send(data);
-    console.log("Got the response");
+    res.send(updateTeacherData);
   } catch (err) {
-    console.log("user not found", err);
+    return err;
   }
 };
 

@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const port = 8000;
 const app = express();
-const router = require("../routers/user-router");
-const sequelize = require("../database/creatingConnection");
+const router = require("../DB with sequelize/routers/user");
+const sequelize = require("../DB with sequelize/database/creatingConnection");
 
 app.use(cors());
 
@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/v10", router);
+app.use("/api/v1", router);
 
 sequelize
   .sync({ alter: true })
@@ -23,5 +23,5 @@ sequelize
   });
 
 app.listen(port, () => {
-  console.log("Running on port 3000");
+  console.log("Running on port 8000");
 });

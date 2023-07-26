@@ -1,5 +1,5 @@
 const Router = require("express");
-const userFunc = require("../controllers/assessment-controllers");
+const userFunc = require("../controllers/assessment");
 const router = Router();
 
 router.get("/", userFunc.getAllUser);
