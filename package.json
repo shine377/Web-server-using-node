@@ -4,11 +4,26 @@
   "main": "index.js",
   "author": "Shiny <shinymary.chandran@crystaldelta.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon --unhandled-rejections=strict index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "undoMigrate": "npx sequelize-cli db:migrate:undo",
+    "runSeeds": "npx sequelize-cli db:seed:all",
+    "test": "jest"
+  },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "moment": "^2.29.4",
     "mysql2": "^3.4.5",
     "nodemon": "^2.0.22",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.6.1",
+    "jest": "^29.6.1",
+    "sequelize-cli": "^6.6.1"
   }
 }
